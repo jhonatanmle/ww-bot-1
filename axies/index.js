@@ -59,8 +59,10 @@ const getMessageScholars = async () => {
   for (let index = 0; index < scholars.length; index++) {
     const element = scholars[index];
     message += `${element.name} - ${
-      element.elo || "No se pudo obtener la información"
-    } ${getStateElo(element.elo)} \n`;
+      element.elo
+        ? getStateElo(element.elo)
+        : `No se pudo obtener la información 🏳️`
+    } \n`;
   }
 
   message += `\n`;
