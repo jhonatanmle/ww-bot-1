@@ -60,7 +60,7 @@ const getMessageScholars = async () => {
     const element = scholars[index];
     message += `${element.name} - ${
       element.elo
-        ? getStateElo(element.elo)
+        ? `${element.elo} ${getStateElo(element.elo)}`
         : `No se pudo obtener la información 🏳️`
     } \n`;
   }
