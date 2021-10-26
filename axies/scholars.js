@@ -57,4 +57,8 @@ module.exports = [
     name: "Postulante 1",
     ronin: "ronin:115242aecd888c195c45f4ee8e2d1983ef12c3bd",
   },
+  {
+    name: "Jean Piere",
+    ronin: "ronin:905a92c4d093c76deba1f3c46ee41a68201a55f6",
+  },
 ];
