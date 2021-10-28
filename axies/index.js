@@ -5,7 +5,7 @@ const URL = "https://axie.tech/ajax/getScholarInfo.php";
 const URL_TABLA = process.env.AXIE_TABLE;
 
 const getStateElo = (elo) => {
-  if (elo >= 1800) {
+  if (elo >= 2000) {
     return `👑`;
   } else if (2000 > elo && elo >= 1800) {
     return `🤑`;
