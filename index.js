@@ -39,7 +39,7 @@ client.on("message", async (message) => {
       return;
     }
 
-    if (command === "tablav") {
+    if (command === "tabla") {
       await getMessageAxie(message, client);
       return;
     }
