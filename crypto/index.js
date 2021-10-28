@@ -55,6 +55,9 @@ const getMessageCommand = async (command, message, client) => {
       client.sendMessage(message.from, media, {
         sendMediaAsSticker: true,
       });
+
+      media = MessageMedia.fromFilePath("./meme/dead.jpeg");
+      client.sendMessage(message.from, media);
     } else if (command === "bajito" || command === "sandro") {
       media = MessageMedia.fromFilePath("./meme/sandro.jpg");
       client.sendMessage(message.from, media, {

@@ -31,21 +31,54 @@ const readFormat = (chain = "", scholar) => {
 
 const getInfoScholars = async () => {
   let listScholars = [];
+  let urls = [];
 
   try {
     for (let index = 0; index < scholars.length; index++) {
       const element = scholars[index];
 
-      const { data } = await axios.get(`${URL}?addr=${element.ronin}`);
-      listScholars.push(readFormat(data, element));
+      const url = `${URL}?addr=${element.ronin}`;
 
-      listScholars = listScholars.sort(function (a, b) {
-        return b.elo - a.elo;
-      });
+      urls.push(url);
     }
+
+    const promises = urls.map((url) =>
+      axios.get(url, {
+        timeout: 5000,
+      })
+    );
+
+    const response = await Promise.all(promises);
+
+    for (let index = 0; index < response.length; index++) {
+      const { data } = response[index];
+
+      listScholars.push(readFormat(data, scholars[index]));
+    }
+
+    listScholars = listScholars.sort(function (a, b) {
+      return b.elo - a.elo;
+    });
   } catch (error) {
     console.error(error);
   }
+
+  // try {
+  //   for (let index = 0; index < scholars.length; index++) {
+  //     const element = scholars[index];
+
+  //     const { data } = await axios.get(`${URL}?addr=${element.ronin}`, {
+  //       timeout: 5000,
+  //     });
+  //     listScholars.push(readFormat(data, element));
+
+  //     listScholars = listScholars.sort(function (a, b) {
+  //       return b.elo - a.elo;
+  //     });
+  //   }
+  // } catch (error) {
+  //   console.error(error);
+  // }
 
   return listScholars;
 };
