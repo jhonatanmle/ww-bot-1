@@ -5,19 +5,39 @@ const URL = "https://axie.tech/ajax/getScholarInfo.php";
 const URL_TABLA = process.env.AXIE_TABLE;
 
 const getStateElo = (elo) => {
-  if (elo >= 1500) {
+  if (elo >= 1800) {
+    return `👑`;
+  } else if (2000 > elo && elo >= 1800) {
     return `🤑`;
+  } else if (1800 > elo && elo >= 1500) {
+    return `🤩`;
   } else if (1500 > elo && elo >= 1300) {
     return `😎`;
   } else if (1300 > elo && elo >= 1100) {
     return `😐`;
   } else if (1100 > elo && elo >= 1000) {
     return `🤧`;
-  } else if (1000 > elo && elo >= 950) {
-    return `😭`;
+  } else if (1000 > elo && elo >= 800) {
+    return `🤢`;
   } else {
     return `☠️`;
   }
+};
+
+const getStatesElo = (message, client) => {
+  let data = "";
+
+  data += `Copas - 🧮\n\n`;
+  data += `2000 - 👑\n`;
+  data += `1800 - 🤑\n`;
+  data += `1500 - 🤩\n`;
+  data += `1300 - 😎\n`;
+  data += `1100 - 😐\n`;
+  data += `1000 - 🤧\n`;
+  data += `800 - 🤢\n`;
+  data += `RIP - ☠️\n`;
+
+  client.sendMessage(message.from, data);
 };
 
 const readFormat = (chain = "", scholar) => {
@@ -112,4 +132,5 @@ const getMessageAxie = async (message, client) => {
 
 module.exports = {
   getMessageAxie,
+  getStatesElo,
 };

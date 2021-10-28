@@ -2,7 +2,7 @@ require("dotenv").config();
 const qrcode = require("qrcode-terminal");
 const { Client } = require("whatsapp-web.js");
 const { getTokenToUSD, getMessageCommand } = require("./crypto/index");
-const { getMessageAxie } = require("./axies/index");
+const { getMessageAxie, getStatesElo } = require("./axies/index");
 
 let sessionLocal = JSON.parse(process.env.WW_SESSION);
 
@@ -41,6 +41,11 @@ client.on("message", async (message) => {
 
     if (command === "tabla") {
       await getMessageAxie(message, client);
+      return;
+    }
+
+    if (command === "arena") {
+      await getStatesElo(message, client);
       return;
     }
 
