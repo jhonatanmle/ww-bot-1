@@ -83,23 +83,6 @@ const getInfoScholars = async () => {
     console.error(error);
   }
 
-  // try {
-  //   for (let index = 0; index < scholars.length; index++) {
-  //     const element = scholars[index];
-
-  //     const { data } = await axios.get(`${URL}?addr=${element.ronin}`, {
-  //       timeout: 5000,
-  //     });
-  //     listScholars.push(readFormat(data, element));
-
-  //     listScholars = listScholars.sort(function (a, b) {
-  //       return b.elo - a.elo;
-  //     });
-  //   }
-  // } catch (error) {
-  //   console.error(error);
-  // }
-
   return listScholars;
 };
 
